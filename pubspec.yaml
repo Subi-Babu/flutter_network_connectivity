@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  connectivity_plus: ^2.3.0
+  connectivity_plus: ^3.0.2
   
   
 
