@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 void main() {
-  runApp(ConnectivityScreen());
+  runApp(MaterialApp(
+  home: ConnectivityScreen()));
 }
 
 class ConnectivityScreen extends StatefulWidget {
@@ -36,28 +37,17 @@ class _ConnectivityScreenState extends State<ConnectivityScreen> {
 
   @override
   void initState() {
+    super.initState();
+
     checkConnectivity();
     streamSubscription = Connectivity().onConnectivityChanged.listen((event) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.teal,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          content: Container(
-              margin: const EdgeInsets.all(10),
-              child: Text(
-                'Connectivity Changed to ' + event.name,
-                textAlign: TextAlign.center,
-              )),
-        ),
-      );
       setState(() {
         status = event.name;
-      });
+      }
+      );
+      
     });
-    super.initState();
+    
   }
 
   @override
